@@ -12,7 +12,7 @@ router.post('/', validateProject, (req, res) => {
             res.status(201).json(newProject)
         })
         .catch(error => {
-            console.log('DB error at post`/`:', error)
+            console.log('DB error at post `/`:', error)
             res.status(500).json({ error: 'couldnt post project data to database'})
         })
 })
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
             res.status(200).json(projects)
         })
         .catch(error => {
-            console.log('DB error at get`/`:', error)
+            console.log('DB error at get `/`:', error)
             res.status(500).json({ error: 'couldnt get project data from database'})
           })
 })
@@ -36,7 +36,7 @@ router.get('/:id', validateId, (req, res) => {
             res.status(200).json(project)
         })
         .catch(error => {
-            console.log('DB error at get`/:id`:', error)
+            console.log('DB error at get `/:id`:', error)
             res.status(500).json({ error: 'couldnt get project data from database'})
         })
 })
@@ -48,7 +48,7 @@ router.get('/:id/actions', validateId, (req, res) => {
             res.status(200).json(actions)
         })
         .catch(error => {
-            console.log('DB error at get`/:id/actions`:', error)
+            console.log('DB error at get `/:id/actions`:', error)
             res.status(500).json({ error: 'couldnt get project actions data from database'})
         })
 })
@@ -60,7 +60,7 @@ router.delete('/:id', validateId, (req, res) => {
             res.status(200).json({ message: 'project was successfully deleted'})
         })
         .catch(error => {
-            console.log('DB error at delete`/:id`:', error)
+            console.log('DB error at delete `/:id`:', error)
             res.status(500).json({ error: 'couldnt remove project data from database'})
         })
 })
@@ -72,7 +72,7 @@ router.put('/:id', validateId, validateProject, (req, res) => {
             res.status(200).json(updatedProject)
         })
         .catch(error => {
-            console.log('DB error at put`/:id`:', error)
+            console.log('DB error at put `/:id`:', error)
             res.status(500).json({ error: 'couldnt update project data in database'})
         })
 })
