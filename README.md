@@ -48,6 +48,19 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] How can we partition our application into sub-applications?
 
+        QUESTION ANSWERS:
+
+1. The two major parts of Express are the ability to do routing and the ability to include middleware.
+
+2. Middleware is simply code to execute in between receiving a request and firing the corresponding handler.
+
+3. A resource is data that we are pulling from a database.
+
+4. To let a client know that a request was successful we will send back a res.response(200) usually.
+
+5. We can partition our application into sub-applications by using express’s routing feature and importing routes into our main server application as a kind of middleware.
+
+
 ## Minimum Viable Product
 
 - [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
