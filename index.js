@@ -7,6 +7,7 @@ const server = express()
 server.use(express.json())
 server.use(logger)
 server.use('/api/projects', projectRouter)
+server.use('/api/actions', actionRouter)
 
 const port = 5000
 
