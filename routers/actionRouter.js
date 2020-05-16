@@ -1,35 +1,44 @@
 const express = require('express')
 const projectData = require('../data/helpers/projectModel')
+const actionData = require('../data/helpers/actionModel')
 
 const router = express.Router()
 
 module.exports = router
 
-router.post('/', (req, res) => {
+router.post('/', validateAction, (req, res) => {
 
-})
-
-router.post('/', (req, res) => {
-    
 })
 
 router.get('/', (req, res) => {
+    actionData
+        .get()
+        .then(projects => {
+            res.status(200).json(projects)
+        })
+        .catch(error => {
+            console.log('DB error at get`/`:', error)
+            res.status(500).json({ error: 'couldnt get project data from database'})
+        })
+})
+
+router.get('/:id', validateId, (req, res) => {
+    actionData
+        .get(req.params.id)
+        .then(projects => {
+            res.status(200).json(projects)
+        })
+        .catch(error => {
+            console.log('DB error at get`/`:', error)
+            res.status(500).json({ error: 'couldnt get project data from database'})
+        })
+})
+
+router.delete('/:id', validateId, (req, res) => {
     
 })
 
-router.get('/:id', (req, res) => {
-    
-})
-
-router.get('/', (req, res) => {
-    
-})
-
-router.delete('/', (req, res) => {
-    
-})
-
-router.put('/', (req, res) => {
+router.put('/:id', validateId, validateAction, (req, res) => {
     
 })
 

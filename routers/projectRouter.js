@@ -10,11 +10,31 @@ router.post('/', validateProject, (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    
+    projectData
+        .get()
+        .then(projects => {
+            res.status(200).json(projects)
+        })
+        .catch(error => {
+            console.log('DB error at get`/`:', error)
+            res.status(500).json({ error: 'couldnt get project data from database'})
+          })
 })
 
 router.get('/:id', validateId, (req, res) => {
-    
+    projectData
+        .get(req.params.id)
+        .then(project => {
+            res.status(200).json(project)
+        })
+        .catch(error => {
+            console.log('DB error at get`/`:', error)
+            res.status(500).json({ error: 'couldnt get project data from database'})
+        })
+})
+
+router.get('/:id/actions', validateId, (req, res) => {
+
 })
 
 router.delete('/:id', validateId, (req, res) => {
