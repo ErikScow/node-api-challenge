@@ -62,7 +62,8 @@ router.put('/:id', validateId, validateAction, (req, res) => {
             console.log('DB error at put `actions/:id`:', error)
             res.status(500).json({ error: 'couldnt update action data in database'})
         })
-}
+})
+
 
 function validateId(req, res, next) {
     const { id } = req.params
