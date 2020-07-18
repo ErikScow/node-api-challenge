@@ -40,13 +40,24 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+The two major parts of Express are the ability to do routing and the ability to include middleware.
+
 - [ ] Describe Middleware?
+
+Middleware is simply code to execute in between receiving a request and firing the corresponding handler.
 
 - [ ] Describe a Resource?
 
+A resource is data that we are pulling from a database.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+To let a client know that a request was successful we will send back a res.response(200) usually.
+
 - [ ] How can we partition our application into sub-applications?
+
+We can partition our application into sub-applications by using express’s routing feature and importing routes into our main server application as a kind of middleware.
+
 
 ## Minimum Viable Product
 
