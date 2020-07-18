@@ -4,6 +4,42 @@ const router = express.Router()
 
 module.exports = router
 
+router.post('/', validateAction, (req, res) => {
+    actionData
+        .insert(req.body)
+        .then(newAction => {
+            res.status(201).json(newAction)
+        })
+        .catch(error => {
+            console.log('DB error at post `actions/`:', error)
+            res.status(500).json({ error: 'couldnt post action data to database'})
+        })
+})
+
+router.get('/', (req, res) => {
+    actionData
+        .get()
+        .then(projects => {
+            res.status(200).json(projects)
+        })
+        .catch(error => {
+            console.log('DB error at get `actions/`:', error)
+            res.status(500).json({ error: 'couldnt get actions data from database'})
+        })
+})
+
+router.get('/:id', validateId, (req, res) => {
+    actionData
+        .get(req.params.id)
+        .then(projects => {
+            res.status(200).json(projects)
+        })
+        .catch(error => {
+            console.log('DB error at get `actions/`:', error)
+            res.status(500).json({ error: 'couldnt get actino data from database'})
+        })
+})
+
 function validateId(req, res, next) {
     const { id } = req.params
     actionData
