@@ -40,6 +40,30 @@ router.get('/:id', validateId, (req, res) => {
         })
 })
 
+router.delete('/:id', validateId, (req, res) => {
+    actionData
+        .remove(req.params.id)
+        .then(() => {
+            res.status(200).json({ message: 'the action was successfully deleted'})
+        })
+        .catch(error => {
+            console.log('DB error at delete `actions/:id`:', error)
+            res.status(500).json({ error: 'couldnt remove action data from database'})
+        })
+})
+
+router.put('/:id', validateId, validateAction, (req, res) => {
+    actionData
+        .update(req.params.id, req.body)
+        .then(updatedAction => {
+            res.status(200).json(updatedAction)
+        })
+        .catch(error => {
+            console.log('DB error at put `actions/:id`:', error)
+            res.status(500).json({ error: 'couldnt update action data in database'})
+        })
+}
+
 function validateId(req, res, next) {
     const { id } = req.params
     actionData
