@@ -4,6 +4,18 @@ const router = express.Router()
 
 module.exports = router
 
+router.post('/', validateProject, (req, res) => {
+    projectData
+        .insert(req.body)
+        .then(newProject => {
+            res.status(201).json(newProject)
+        })
+        .catch(error => {
+            console.log('DB error at post `/`:', error)
+            res.status(500).json({ error: 'couldnt post project data to database'})
+        })
+})
+
 function validateId(req, res, next) {
     const { id } = req.params
     projectData
